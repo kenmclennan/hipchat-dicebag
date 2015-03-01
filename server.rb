@@ -8,7 +8,7 @@ module HipChatDiceBag
   class Server < Sinatra::Base
 
     ROLLER = Random.new
-    LOG    = Logger.new
+    LOG    = Logger.new(STDOUT)
 
     LOG.level = Logger.const_get ENV['LOG_LEVEL'] || 'DEBUG'
 
