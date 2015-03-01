@@ -10,8 +10,6 @@ module HipChatDiceBag
     ROLLER = Random.new
     LOG    = Logger.new(STDOUT)
 
-    LOG.level = Logger.const_get ENV['LOG_LEVEL'] || 'DEBUG'
-
     get '/' do
       'OK!'
     end
