@@ -7,6 +7,10 @@ module HipChatDiceBag
 
     ROLLER = Random.new
 
+    get '/' do
+      'OK!'
+    end
+
     post '/roll' do
       sides    = Integer(params.fetch(:d){ 20 })
       quantity = Integer(params.fetch(:q){ 1 })
