@@ -1,12 +1,16 @@
 require 'sinatra/base'
 require 'json'
 require "awesome_print"
+require 'logger'
 
 
 module HipChatDiceBag
   class Server < Sinatra::Base
 
     ROLLER = Random.new
+    LOG    = Logger.new
+
+    LOG.level = Logger.const_get ENV['LOG_LEVEL'] || 'DEBUG'
 
     get '/' do
       'OK!'
@@ -19,7 +23,7 @@ module HipChatDiceBag
 
       name = if request.content_type=="application/json"
         body = JSON.parse(request.body.read)
-        ap body
+        Log.ap body
         body['item']['message']['from']['name']
       else
         'you'
