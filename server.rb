@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'json'
+require "awesome_print"
 
 
 module HipChatDiceBag
@@ -18,6 +19,7 @@ module HipChatDiceBag
 
       name = if request.content_type=="application/json"
         body = JSON.parse(request.body.read)
+        ap body
         body['item']['message']['from']['name']
       else
         'you'
