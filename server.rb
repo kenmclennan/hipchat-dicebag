@@ -23,7 +23,7 @@ module HipChatDiceBag
 
       name = if request.content_type=="application/json"
         body = JSON.parse(request.body.read)
-        LOG.ap body
+        LOG.debug body
         body['item']['message']['from']['name']
       else
         'you'
